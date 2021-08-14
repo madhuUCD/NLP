@@ -157,3 +157,96 @@ df.head()
 
 Now Let's see the structure of the dataset.
 ![image](https://user-images.githubusercontent.com/88864828/129461416-0ccef2f0-e994-40b8-8b95-8ff94dbb6eb2.png)
+
+
+From looking at the structure we can know the following,  
+1.There are 10 features/columns and 568454 observations/rows in the dataset.  
+2.The datatypes of each feature i.e. int64(for 5 features ), object(for 5 features)  
+3.The memory it takes to get stored in the variable(43.4 Mb).  
+
+
+It is necessary to peek into the data to know what we are deaing with.Sometimes the data is not suitable for analysis so it has to be cleaned.So we need to assess whether our dataset needs to be cleaned or not.  
+
+We remove all the null rows from the dataset. A null denotes no value.  
+
+## Exploratory Data Analysis  
+
+We only keep the features necessary for anlaysis, rest of the features are dropped.So, in our case we only keep 'Text' and 'Score' features and drop the rest.  
+
+![image](https://user-images.githubusercontent.com/88864828/129461781-7985e042-208b-40e8-b122-25d217925adb.png)
+
+We drop null values and then check whether all null values have been removed.  
+![image](https://user-images.githubusercontent.com/88864828/129461808-3308bc4c-0b4d-4d11-9b64-52aba5cd25a3.png)
+
+
+##### Check Random Review
+
+The below code uses random library to generate random numbers and we use this random numbers to look at random rows of the dataset.  
+```
+#Check random reviews
+import random
+random.seed(20204749) #Adding seed to reproduce the same result
+randomlist = []
+
+#find 5 random numbers within the highest number of rows
+for i in range(0,5):
+    n = random.randint(1,568454 )
+    randomlist.append(n)
+print(randomlist)
+
+#Print the reviews and it's corresponding rating
+#5 random results are obtained
+for i in range(0,5):
+    print("Review:","\n", data.loc[randomlist[i]][0]) #print review
+    
+    print("\n") # create a new line for better readability
+    
+    print("Rating:","\n", data.loc[randomlist[i]][1]) #print the corresponding rating of above review
+    
+    print(100*'#') # Adding '#' to sperate one review from other
+ ```
+![image](https://user-images.githubusercontent.com/88864828/129461866-1b387434-d967-41cd-b8af-7e41f6acdc42.png)
+
+Then we check the Score variable, since score consist of numbers we see the summary statistics of score and the frequency of scores.  
+![image](https://user-images.githubusercontent.com/88864828/129461894-6a66b390-7a5b-4817-87f8-cbed07febad5.png)
+
+We can see that the range of scores is between 1 and 5. The scores are skewed towards higher rating/score. If we see the proportion of score 63.87 % contributes to a rating of 5 and 14.18% to rating 4 but only a meagre 21.93% is contributed by ratings 1, 2 and 3 combined. So clearly there is a imbalance in higher and lower rating. This causes any machine learning algorithm to perform bad so we need to make sure our training dataset has balanced reviews to get the best predictive performance. 
+
+###### Distribution of Rating  
+```
+# distribution of rating
+sns.countplot(data['Score'], palette='Blues')
+
+plt.title('Distribution of rating scores')
+plt.xlabel('Rating')
+plt.ylabel('Count')
+plt.show()
+```
+
+There is a huge imbalance in the data to the high rate classes this may affect the prediction of NLP model.  
+
+Our Aim is to classify review as either positive or negative but there are 5 scores. So we should somehow convert this into a 2 class problem.  
+Since this is a 2 class classification problem we convert the response variable accordingly to have only 2 classes. To achieve this we map the scores {1,2,3} to the value 0 and the scores {4,5 } to the value 1. 0 represents a ‘Negative’ comment and 1 represents a ‘Positive’ comment.  
+```
+# map ratings 1, 2, 3 to 0 (NEGATIVE) and 4, 5 to 1 (POSITIVE) 
+sentiment_score = {1: 0,
+                   2: 0,
+                   3: 0,
+                   4: 1,
+                   5: 1}
+
+sentiment = {0: 'NEGATIVE',
+             1: 'POSITIVE'}
+
+
+# mapping
+data['sentiment_score'] = data['Score'].map(sentiment_score)
+data['sentiment'] = data['sentiment_score'].map(sentiment)
+
+data.head()
+```
+
+The mapped result looks like below.  
+![image](https://user-images.githubusercontent.com/88864828/129461981-f3a7ef44-ac97-4616-8e6a-063bceb70838.png)
+
+
