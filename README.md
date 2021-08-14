@@ -290,7 +290,7 @@ plt.show()
 ![image](https://user-images.githubusercontent.com/88864828/129462042-38d81cf2-b317-4857-8293-ecbe5d75311d.png)
 
 
-Similarly, we split all words only in positive reviews.
+Similarly, we split all words only in **positive** reviews.
 
 ```
 # get words used positive reivews 
@@ -313,7 +313,7 @@ plt.show()
 ![image](https://user-images.githubusercontent.com/88864828/129462105-0710e267-1132-4b4e-8ee1-ffa04749e35a.png)
 
 
-Similarly we do for Negative words.  
+Similarly we do for **Negative** words.  
 
 ```
 # get words used negative reivews 
@@ -331,3 +331,116 @@ plt.axis("off")
 plt.show()
 ```
 ![image](https://user-images.githubusercontent.com/88864828/129462127-f40d3464-24a3-4adb-ad87-3d70405786d6.png)
+
+## Text Processing  
+Before doing any analytics it is paramount to check the data quality because the analytics produced from the dataset is as good as the quality of the data. The Amazon dataset has to be cleaned before fitting our machine learning models.  
+
+**1. Clean Text**  
+We will go over some simple techniques to clean and prepare text data for modeling with machine learning.
+```
+def clean_Text(Text:str):
+    """ Return cleaned Text:
+            - lowercase
+            - remove whitespaces
+            - remove HTML tags
+            - replace digit with spaces
+            - replace punctuations with spaces
+            - remove extra spaces and tabs
+        ------
+        input: Text (str)    
+        output: cleaned Text (str)
+    """
+    Text = str(Text)
+    
+    Text = Text.lower()
+    Text = Text.strip()
+    
+    Text = re.sub(' \d+', ' ', Text)
+    Text = re.compile('<.*?>').sub('', Text)
+    Text = re.compile('[%s]' % re.escape(string.punctuation)).sub(' ', Text)
+    Text = re.sub('\s+', ' ', Text)
+    
+    Text = Text.strip()
+    
+    return Text
+ ```  
+ We test whether the above clean_Text function can change the text to lowercaase, remove whitespaces, remove html tags, replace digit with spaces and remove extra spaces and tabs.  
+ ![image](https://user-images.githubusercontent.com/88864828/129462302-65cef3ed-3f5d-445a-9e04-cd2ac5c1e7f9.png)
+
+**2. Remove Stopwords**  
+There can be some words in our sentences that occur very frequently and don't contribute too much to the overall meaning of the sentences. We usually have a list of these words and remove them from each our sentences. For example: "a", "an", "the", "this", "that", "is", "it", "to", "and" in this example.  
+```
+def remove_stopwords(Text:str):
+    """ Remove stopwords from Text:
+        ------
+        input: Text (str)    
+        output: cleaned Text (str)
+    """
+    Text = str(Text)
+    filtered_sentence = []
+
+    # Stop word lists can be adjusted for your problem
+    stop_words = ["a", "an", "the", "this", "that", "is", "it", "to", "and"]
+
+    # Tokenize the sentence
+    words = word_tokenize(Text)
+    for w in words:
+        if w not in stop_words:
+            filtered_sentence.append(w)
+    Text = " ".join(filtered_sentence)
+    
+    return Text
+  ```
+![image](https://user-images.githubusercontent.com/88864828/129462320-e0d82f70-617a-4c88-8e8f-f075188bda68.png)
+
+Yeah! it works i has removed the stop words from the test string.  
+
+**3. Stemming**  
+Stemming is a rule-based system to convert words into their root form. It removes suffixes from words. This helps us enhace similarities (if any) between sentences.
+
+```
+def stemm_text(text:str):
+    """ Stemm text:
+    ------
+    input: text (str)    
+    output: Stemmed text (str)
+    """
+    text = str(text)
+    # Initialize the stemmer
+    snow = SnowballStemmer('english')
+
+    stemmed_sentence = []
+    # Tokenize the sentence
+    words = word_tokenize(text)
+    for w in words:
+        # Stem the word/token
+        stemmed_sentence.append(snow.stem(w))
+    text = " ".join(stemmed_sentence)
+    
+    return text
+ ```
+ 
+ ![image](https://user-images.githubusercontent.com/88864828/129462359-62d30f50-b885-4bca-a26b-9ed467f0b1e7.png)
+
+You can see above that stemming operation is NOT perfect. We have mistakes such as "messag", "involv", "adjac". It is a rule based method that sometimes mistakely remove suffixes from words. Nevertheless, it runs fast.
+
+**4. Lemmatization**  
+If we are not satisfied with the result of stemming, we can use the Lemmatization instead. It usually requires more work, but gives better results. As mentioned in the class, lemmatization needs to know the correct word position tags such as "noun", "verb", "adjective", etc. and we will use another NLTK function to feed this information to the lemmatizer.  
+
+The full list of below helper function can be found ![here](https://www.ling.upenn.edu/courses/Fall_2003/ling001/penn_treebank_pos.html)  
+```
+# This is a helper function to map NTLK position tags
+# Full list is available here: https://www.ling.upenn.edu/courses/Fall_2003/ling001/penn_treebank_pos.html
+def get_wordnet_pos(tag):
+    if tag.startswith('J'):
+        return wordnet.ADJ
+    elif tag.startswith('V'):
+        return wordnet.VERB
+    elif tag.startswith('N'):
+        return wordnet.NOUN
+    elif tag.startswith('R'):
+        return wordnet.ADV
+    else:
+        return wordnet.NOUN
+```
+
