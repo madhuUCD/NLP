@@ -34,13 +34,34 @@ Click 'Next'
 Click 'I agree'  for the terms and conditions  
 ![Install2](https://user-images.githubusercontent.com/88864828/129460663-04573166-e366-4fbd-9010-bcde2126449d.JPG)
 
-Click 'Next' for Just me(Rexommended) and click on Install
+Click 'Next' for Just me(recommended) and click on Install
 ![Install3](https://user-images.githubusercontent.com/88864828/129460669-0d764331-0df4-40dc-9609-bf376b2bcb0b.JPG)
 
 Select the required destination folder where you want to install Anaconda
 ![Install4](https://user-images.githubusercontent.com/88864828/129460678-3a1a2a60-7724-4374-95c5-313ecfb2bf55.JPG)
+
+Installation has started
 ![Install](https://user-images.githubusercontent.com/88864828/129460685-bd7c2f55-1c12-437c-abb7-4f9fd0c6e54d.JPG)
+
+Anconda is Installed Click on Next 
+![Install5](https://user-images.githubusercontent.com/88864828/129460768-8bb4f4cb-359d-4958-a620-e2938819e338.jpg)
+
+Click on Next 
+![Install6](https://user-images.githubusercontent.com/88864828/129460815-ee3700cd-daf9-4df3-9c58-11aea3e9ed9b.JPG)
+
+Click on finish
+![Install7](https://user-images.githubusercontent.com/88864828/129460831-5b129aa3-3db4-40ae-9af2-878036b9dc42.JPG)
+
+Anaconda is successfully Installed!!!
+
+##### Launch Anaconda Navigator
+Open Anaconda Navigator from the Start Menu
+
+![image](https://user-images.githubusercontent.com/88864828/129460868-f97c2d50-5cbb-4c1d-be0e-b2400a37520d.png)
+
+
 ## Installation
+
 
 Install my-project with npm
 
