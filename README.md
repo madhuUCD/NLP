@@ -52,7 +52,7 @@ Click on Next
 Click on finish  
 ![Install7](https://user-images.githubusercontent.com/88864828/129460831-5b129aa3-3db4-40ae-9af2-878036b9dc42.JPG)
 
-Anaconda is successfully Installed!!!
+***Anaconda is successfully Installed!!!***
 
 ##### Launch Anaconda Navigator
 Open Anaconda Navigator from the Start Menu
@@ -62,6 +62,9 @@ Open Anaconda Navigator from the Start Menu
 Launch Jupyter Notebooks  
 
 ![Install5](https://user-images.githubusercontent.com/88864828/129460983-1f1b350d-6c28-485c-b4f9-3357c392368a.jpg)
+
+Click on 'New' and select  'Python 3'
+![image](https://user-images.githubusercontent.com/88864828/129461047-c2dd226c-7fda-49bf-a3a0-936c39430502.png)
 
 ## Installation
 
