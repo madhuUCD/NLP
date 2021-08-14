@@ -9,13 +9,18 @@ Get the dataset from my github.
 
 ## Requirement
 
-We can use multiple programming languages to classify whether a review is 'Positive' or 'Negative'.But for this project I have used Python.
+We can use multiple programming languages like Python, R, SAS etc.. to classify whether a review is 'Positive' or 'Negative'.But for this project I have used Python since it is ubiquitous, open-source and easy to learn.
 Python is a general purpose programming language if you want to know more about python follow this [link](https://en.wikipedia.org/wiki/Python_(programming_language))
 
+And I have used **Jupyter Notebook** to develop the project.Jupyter is a free, open-source, interactive web tool known as a computational notebook, which researchers can use to combine software code, computational output, explanatory text and multimedia resources in a single document.
 
-`API_KEY`
+#### How to Install Python and Jupyter Notebooks  
 
-`ANOTHER_API_KEY`
+Installing Python, Jupyter Noteboks and setting the envirnment with required packages or libraries would be cumbersome for a newbie, so I have installed **Anaconda** which would install Python and Jupyter Notebook by default.
+
+Download [Anaconda](https://www.anaconda.com/products/individual#windows) for windows
+
+
 
   
 ## Installation
