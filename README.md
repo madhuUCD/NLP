@@ -40,16 +40,16 @@ Click 'Next' for Just me(recommended) and click on Install
 Select the required destination folder where you want to install Anaconda
 ![Install4](https://user-images.githubusercontent.com/88864828/129460678-3a1a2a60-7724-4374-95c5-313ecfb2bf55.JPG)
 
-Installation has started
+Installation has started  
 ![Install](https://user-images.githubusercontent.com/88864828/129460685-bd7c2f55-1c12-437c-abb7-4f9fd0c6e54d.JPG)
 
-Anconda is Installed Click on Next 
+Anconda is Installed Click on Next  
 ![Install5](https://user-images.githubusercontent.com/88864828/129460768-8bb4f4cb-359d-4958-a620-e2938819e338.jpg)
 
-Click on Next  
+Click on Next
 ![Install6](https://user-images.githubusercontent.com/88864828/129460815-ee3700cd-daf9-4df3-9c58-11aea3e9ed9b.JPG)
 
-Click on finish  
+Click on finish
 ![Install7](https://user-images.githubusercontent.com/88864828/129460831-5b129aa3-3db4-40ae-9af2-878036b9dc42.JPG)
 
 ***Anaconda is successfully Installed!!!***
@@ -65,6 +65,68 @@ Launch Jupyter Notebooks
 
 Click on 'New' and select  'Python 3'
 ![image](https://user-images.githubusercontent.com/88864828/129461047-c2dd226c-7fda-49bf-a3a0-936c39430502.png)
+
+Now we can start to use python in Jupyter Notebooks
+![image](https://user-images.githubusercontent.com/88864828/129461097-a1ca958e-1213-4605-a660-2906b4ea6d58.png)
+
+
+## Libraries  
+Python has a huge amount of  pre-written librariers which can be leaveraged for this project.
+
+First step we install all the required librariers.
+
+```
+# required libraries
+import numpy as np 
+import pandas as pd
+
+import matplotlib.pyplot as plt
+from matplotlib.colors import LinearSegmentedColormap
+import seaborn as sns
+
+import re
+import string
+
+import nltk
+from nltk.corpus import stopwords
+from nltk.tokenize import word_tokenize
+from nltk.stem import SnowballStemmer
+from nltk.corpus import wordnet
+from nltk import pos_tag
+from nltk.stem import WordNetLemmatizer
+
+import spacy
+from wordcloud import WordCloud, STOPWORDS, ImageColorGenerator
+
+from collections import Counter
+
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.model_selection import cross_validate
+from sklearn.model_selection import train_test_split
+from sklearn.model_selection import StratifiedKFold
+from sklearn.metrics import classification_report
+from sklearn.metrics import confusion_matrix
+from sklearn.metrics import roc_auc_score
+from sklearn.utils import shuffle
+from sklearn.naive_bayes import MultinomialNB
+
+from xgboost import XGBClassifier
+
+from transformers import pipeline
+
+import warnings
+warnings.filterwarnings('ignore')
+
+#NLTK package is already installed
+#But got errors while impelementing tokenization and Lemmetization
+
+#Tokenization
+nltk.download('punkt')
+
+#Lemmitization
+nltk.download('averaged_perceptron_tagger')
+nltk.download('wordnet')
+```
 
 ## Installation
 
