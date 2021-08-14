@@ -1,1 +1,1 @@
-![Screenshot](Sem8.jpg)
+![Screenshot](Sem8.jpeg)
