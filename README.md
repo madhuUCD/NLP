@@ -1,1 +1,1 @@
-(https://github.com/[madhuUCD]/[NLP]/Sem8.jpg?raw=true)
+![Screenshot](Sem8.jpg)
