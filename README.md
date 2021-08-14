@@ -46,10 +46,10 @@ Installation has started
 Anconda is Installed Click on Next 
 ![Install5](https://user-images.githubusercontent.com/88864828/129460768-8bb4f4cb-359d-4958-a620-e2938819e338.jpg)
 
-Click on Next 
+Click on Next  
 ![Install6](https://user-images.githubusercontent.com/88864828/129460815-ee3700cd-daf9-4df3-9c58-11aea3e9ed9b.JPG)
 
-Click on finish
+Click on finish  
 ![Install7](https://user-images.githubusercontent.com/88864828/129460831-5b129aa3-3db4-40ae-9af2-878036b9dc42.JPG)
 
 Anaconda is successfully Installed!!!
@@ -59,6 +59,9 @@ Open Anaconda Navigator from the Start Menu
 
 ![image](https://user-images.githubusercontent.com/88864828/129460868-f97c2d50-5cbb-4c1d-be0e-b2400a37520d.png)
 
+Launch Jupyter Notebooks  
+
+![Install5](https://user-images.githubusercontent.com/88864828/129460983-1f1b350d-6c28-485c-b4f9-3357c392368a.jpg)
 
 ## Installation
 
