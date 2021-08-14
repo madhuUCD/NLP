@@ -1,12 +1,17 @@
 
-# Python
+# Sentiment Analysis on Amazon Customer Feedback using Python
 
-A brief description of what this project does and who it's for
+Sentiment analysis, also refers as opinion mining, is a sub machine learning task where we want to determine the general sentiment of a given document. Using machine learning techniques and natural language processing we can extract the subjective information of a document and try to classify it according to its polarity such as positive, neutral or negative. It is a really useful analysis since we could possibly determine the overall opinion about selling objects, or predict stock markets for a given company like, if most people think positive about it, possibly its stock markets will increase, and so on. Sentiment analysis is actually far from to be solved since the language is very complex (objectivity/subjectivity, negation, vocabulary, grammar, etc.. but it is also why it is very interesting to working on. 
+In this project I choose to try to classify customer feedback from Amazon into “positive” or “negative” sentiment by building a model based on probabilities. The dataset can be obtained from ‘Google datasets’ or ‘Kaggle’. Computers can’t understand text so text has to be converted into a format which is comprehended by the computer
 
 
-## Environment Variables
+Get the dataset from my github.
 
-To run this project, you will need to add the following environment variables to your .env file
+## Requirement
+
+We can use multiple programming languages to classify whether a review is 'Positive' or 'Negative'.But for this project I have used Python.
+Python is a general purpose programming language if you want to know more about python follow this [link](https://en.wikipedia.org/wiki/Python_(programming_language))
+
 
 `API_KEY`
 
@@ -42,4 +47,3 @@ function App() {
 ![Logo](https://photos.google.com/photo/AF1QipN1OZHLp9ZwMsQnWJjX4AvS5VilAGiTLAKNcEX4)
 
     
-![Sem 8](https://user-images.githubusercontent.com/88864828/129459165-1ffd2b05-89bb-4a08-9742-3364b035bea4.jpg)
