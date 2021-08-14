@@ -249,4 +249,85 @@ data.head()
 The mapped result looks like below.  
 ![image](https://user-images.githubusercontent.com/88864828/129461981-f3a7ef44-ac97-4616-8e6a-063bceb70838.png)
 
+##### Visulaize the distribution of positive and negative comments
+```
+# distribution of sentiment
+plt.figure(figsize = (8, 8))
 
+labels = ['POSITIVE', 'NEGATIVE']
+colors = ['#189AB4', '#D4F1F4']
+plt.pie(data['sentiment'].value_counts(), autopct='%0.2f%%',colors=colors)
+
+plt.title('Distribution of sentiment', size=14, y=-0.01)
+plt.legend(labels, ncol=2, loc=9)
+plt.show()
+
+```
+![image](https://user-images.githubusercontent.com/88864828/129462009-30b56402-0888-4924-9320-c5044f8144a0.png)
+
+##### Visulaization of Negative and Positive Words using Word Cloud  
+Word Cloud is a way to visualize textual data, the most repeated words are bigger in size and the less frequent words are smaller in size.
+
+First step we split each word from each individual sentence in all the observations using split function and save the result as a Series.  
+```
+# get all used words 
+all_words = pd.Series(' '.join(data['Text']).split())
+```
+Then we use the WordCloud function to visulaize the text in our case the reviews.  
+```
+# plot word cloud
+wordcloud = WordCloud(width = 1000, height = 500).generate(' '.join(all_words))
+
+plt.figure(figsize=(15,8))
+
+plt.imshow(wordcloud)
+plt.title("Most used words in all reviews", size=16)
+
+plt.axis("off")
+plt.show()
+```
+
+![image](https://user-images.githubusercontent.com/88864828/129462042-38d81cf2-b317-4857-8293-ecbe5d75311d.png)
+
+
+Similarly, we split all words only in positive reviews.
+
+```
+# get words used positive reivews 
+positiveWords = pd.Series(' '.join(data[data['sentiment']=='POSITIVE']['Text']).split())
+```
+
+ And visualize it using word cloud.  
+```
+# plot word cloud
+wordcloud = WordCloud(width = 1000, height = 500).generate(' '.join(positiveWords))
+
+plt.figure(figsize=(15,8))
+
+plt.imshow(wordcloud)
+plt.title("Most used words in positive reviews", size=16)
+
+plt.axis("off")
+plt.show()
+```
+![image](https://user-images.githubusercontent.com/88864828/129462105-0710e267-1132-4b4e-8ee1-ffa04749e35a.png)
+
+
+Similarly we do for Negative words.  
+
+```
+# get words used negative reivews 
+negativeWords = pd.Series(' '.join(data[data['sentiment']=='NEGATIVE']['Text']).split())
+
+# plot word cloud
+wordcloud = WordCloud(width = 1000, height = 500).generate(' '.join(negativeWords))
+
+plt.figure(figsize=(15,8))
+
+plt.imshow(wordcloud)
+plt.title("Most used words in negative reviews", size=16)
+
+plt.axis("off")
+plt.show()
+```
+![image](https://user-images.githubusercontent.com/88864828/129462127-f40d3464-24a3-4adb-ad87-3d70405786d6.png)
