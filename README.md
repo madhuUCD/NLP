@@ -139,3 +139,21 @@ string    --> String Manipluation
 re        --> Regular Expression  
 
 
+Load the Amazon dataset using pandas library.
+
+Since the dataset is in .csv format we use read_csv function of pandas to load the dataset.
+
+Using head function look at the initial few rows of the dataset,By default head shows the first 5 rows of the dataset
+``` 
+
+# load dataset 
+df = pd.read_csv('D:\\Trimester 2\\Final Project\\Reviews.csv')
+
+#First 5 rows of the dataset
+df.head()
+```
+
+![image](https://user-images.githubusercontent.com/88864828/129461394-bcf7c9db-ee37-498f-b7e0-98f5cf5d67ac.png)
+
+Now Let's see the structure of the dataset.
+![image](https://user-images.githubusercontent.com/88864828/129461416-0ccef2f0-e994-40b8-8b95-8ff94dbb6eb2.png)
