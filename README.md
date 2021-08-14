@@ -129,13 +129,13 @@ nltk.download('wordnet')
 ```
 A quick overview of installed libraries and their use.
 
-Numpy     --> Mathematical Operations
-Pandas    --> Data Analysis
-Matplotlib--> Data Visualization
+Numpy     --> Mathematical Operations  
+Pandas    --> Data Analysis  
+Matplotlib--> Data Visualization  
 Seaborn   --> Data Visualization  
-sklearn   --> Machine Learning
-NLTK      --> NLP techniques
-string    --> String Manipluation
-re        --> Regular Expression
+sklearn   --> Machine Learning  
+NLTK      --> NLP techniques  
+string    --> String Manipluation  
+re        --> Regular Expression  
 
 
