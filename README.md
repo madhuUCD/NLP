@@ -69,7 +69,7 @@ Click on 'New' and select  'Python 3'
 Now we can start to use python in Jupyter Notebooks
 ![image](https://user-images.githubusercontent.com/88864828/129461097-a1ca958e-1213-4605-a660-2906b4ea6d58.png)
 
-
+Here after we will be using Jupyter Notebooks IDE for the entire project.
 ## Libraries  
 Python has a huge amount of  pre-written librariers which can be leaveraged for this project.
 
