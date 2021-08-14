@@ -127,34 +127,15 @@ nltk.download('punkt')
 nltk.download('averaged_perceptron_tagger')
 nltk.download('wordnet')
 ```
+A quick overview of installed libraries and their use.
 
-## Installation
+Numpy     --> Mathematical Operations
+Pandas    --> Data Analysis
+Matplotlib--> Data Visualization
+Seaborn   --> Data Visualization  
+sklearn   --> Machine Learning
+NLTK      --> NLP techniques
+string    --> String Manipluation
+re        --> Regular Expression
 
 
-Install my-project with npm
-
-```
-  npm install my-project
-  cd my-project
-```
-    
-## Usage/Examples
-
-```javascript
-import Component from 'my-project'
-
-function App() {
-  return <Component />
-}
-```
-
-  
-## Documentation
-
-[Documentation](https://photos.google.com/photo/AF1QipN1OZHLp9ZwMsQnWJjX4AvS5VilAGiTLAKNcEX4)
-
-  
-  
-![Logo](https://photos.google.com/photo/AF1QipN1OZHLp9ZwMsQnWJjX4AvS5VilAGiTLAKNcEX4)
-
-    
