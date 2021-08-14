@@ -18,11 +18,28 @@ And I have used **Jupyter Notebook** to develop the project.Jupyter is a free, o
 
 Installing Python, Jupyter Noteboks and setting the envirnment with required packages or libraries would be cumbersome for a newbie, so I have installed **Anaconda** which would install Python and Jupyter Notebook by default.
 
+##### Step 1  
+
 Download [Anaconda](https://www.anaconda.com/products/individual#windows) for windows
 
+Click on the download button marked by the red arrow.
+
+##### Step 2  
+Open the downloaded .exe file 
+
+Click 'Next'  
+![Install1](https://user-images.githubusercontent.com/88864828/129460649-e34eb1c5-cb9e-4aa2-ad65-7e34a750f76d.JPG)
 
 
-  
+Click 'I agree'  for the terms and conditions  
+![Install2](https://user-images.githubusercontent.com/88864828/129460663-04573166-e366-4fbd-9010-bcde2126449d.JPG)
+
+Click 'Next' for Just me(Rexommended) and click on Install
+![Install3](https://user-images.githubusercontent.com/88864828/129460669-0d764331-0df4-40dc-9609-bf376b2bcb0b.JPG)
+
+Select the required destination folder where you want to install Anaconda
+![Install4](https://user-images.githubusercontent.com/88864828/129460678-3a1a2a60-7724-4374-95c5-313ecfb2bf55.JPG)
+![Install](https://user-images.githubusercontent.com/88864828/129460685-bd7c2f55-1c12-437c-abb7-4f9fd0c6e54d.JPG)
 ## Installation
 
 Install my-project with npm
