@@ -427,7 +427,7 @@ You can see above that stemming operation is NOT perfect. We have mistakes such 
 **4. Lemmatization**  
 If we are not satisfied with the result of stemming, we can use the Lemmatization instead. It usually requires more work, but gives better results. As mentioned in the class, lemmatization needs to know the correct word position tags such as "noun", "verb", "adjective", etc. and we will use another NLTK function to feed this information to the lemmatizer.  
 
-The full list of below helper function can be found ![here](https://www.ling.upenn.edu/courses/Fall_2003/ling001/penn_treebank_pos.html)  
+The full list of below helper function can be found [here](https://www.ling.upenn.edu/courses/Fall_2003/ling001/penn_treebank_pos.html)  
 ```
 # This is a helper function to map NTLK position tags
 # Full list is available here: https://www.ling.upenn.edu/courses/Fall_2003/ling001/penn_treebank_pos.html
@@ -444,3 +444,71 @@ def get_wordnet_pos(tag):
         return wordnet.NOUN
 ```
 
+```
+def lemmatize(text:str):
+    """ lemmatize text:
+    ------
+    input: text (str)    
+    output: lemmatized text (str)
+    """
+    text = str(text)
+    
+    # Initialize the lemmatizer
+    wl = WordNetLemmatizer()
+
+    lemmatized_sentence = []
+
+    # Tokenize the sentence
+    words = word_tokenize(text)
+    # Get position tags
+    word_pos_tags = nltk.pos_tag(words)
+    # Map the position tag and lemmatize the word/token
+    for idx, tag in enumerate(word_pos_tags):
+        lemmatized_sentence.append(wl.lemmatize(tag[0], get_wordnet_pos(tag[1])))
+
+    lemmatized_text = " ".join(lemmatized_sentence)
+    
+    return lemmatized_text
+```
+![image](https://user-images.githubusercontent.com/88864828/129462396-565ffee4-c6eb-48a1-9b47-4237fcff0d2d.png)
+
+This looks better than the stemming result.  
+
+Now we apply the above functions clean_Text, remove_stopwords and lemmatize on our dataset.  
+
+Be aware that the below chunk would take around 2 hours to complete.If we want it to be quick we could opt for stemming rather than lemmatization but it's not accurate as seen from examples above.  
+
+```
+# clean text
+data['Text'] = data['Text'].apply(clean_Text)
+# remove stopwords
+data['Text'] = data['Text'].apply(remove_stopwords)
+# lemmatize
+data['Text'] = data['Text'].apply(lemmatize)
+```
+
+## Feature Engineering and Selection of model  
+Text data requires special preparation before predictive modelling. The text must be parsed to remove words, called tokenization. Then the words need to be encoded as integers or floating point values as input to a machine learning algorithm, called feature extraction (or vectorization).The scikit-learn library offers easy-to-use tools to perform both tokenization and feature extraction of your text data. 
+```
+vectorizer = TfidfVectorizer(max_features=700)
+vectorizer.fit(data['Text'])
+features = vectorizer.transform(data['Text'])
+
+features.toarray()
+```
+Using TfidfVectorizer we will tokenize documents, learn the vocabulary and inverse document frequency weightings, and  encode it as a new document. The inverse document frequencies are calculated for each word in the vocabulary, assigning the lowest score of 1.0. The scores are normalized to values between 0 and 1 and the encoded document vectors can then be used directly with most machine learning algorithms.
+```
+tf_idf = pd.DataFrame(features.toarray(), columns=vectorizer.get_feature_names()).astype(np.float16)
+# tf_idf.drop('50', axis=1, inplace=True)
+tf_idf.head()
+tf_idf.info(memory_usage='deep')
+```
+
+## Split the dataset  
+The idea is to train the machine learning model on a specific dataset and test it on unseen data (another dataset). For this purpose we split the given dataset into two sets Training and Testing Sets.  
+
+We would train all our machine learning models on a training datset and Test in testing set to check the predictive performance of the model.  
+
+While splitting we need to make sure that there is no overlap of data between the testing and training set because if there is a overlap the given machine learning model would perform well in the testing set but would fail when deployed in production. 
+
+But this can be easily done with the help of `train_test_split` function wherin we use test_size=0.2( means 20% of data will be allocated for testing dataset and remaining 80% for training), random_state=42(This is a random number given to reproduce the result)  
