@@ -570,10 +570,76 @@ But after Oversampling the the count of minority class equals the majority class
 
 ## Models  
 
-Since our data is ready now it's time to fit different models like 
+Since our data is ready now it's time to fit different models  
 
-1.
-2.
-3.
-4.
-5.
+1.Naive Bayes  
+2.XGBOOST  
+3.Support Vector Machine  
+4.Logistic Regression  
+5.Neural Network  
+
+Instead of fitting every model to the data seperatley let's create a function which takes the machine learning(ML) function as input(eg:XGBClassifier()) and use the same function to fit other ML models and visulaize it through confusion matrix.  
+
+```
+def modeling(Model, Xtrain = X_train, Xtest = X_test):
+    """
+    This function apply countVectorizer with machine learning algorithms. 
+    """
+    
+    # Instantiate the classifier: model
+    model = Model
+    
+    # Fitting classifier to the Training set (all features)
+    model.fit(Xtrain, y_train)
+    
+    global y_pred
+    # Predicting the Test set results
+    y_pred = model.predict(Xtest)
+    
+    # Assign f1 score to a variable
+    print(classification_report(y_test, y_pred))
+    print ('AUC ',roc_auc_score(y_test, y_pred))
+    #cm = confusion_matrix(y_test, y_pred)
+    confusion_matrix = pd.crosstab(index=y_test, columns=np.round(y_pred), rownames=['Actual'], colnames=['Predictions']).astype(int)
+    plt.figure(figsize = (8,8))
+
+    '''
+    cmapGR = LinearSegmentedColormap.from_list(
+        name='test', 
+        colors=['red','green']
+    )
+    '''
+    sns.heatmap(confusion_matrix, annot=True,annot_kws={"fontsize":12}, fmt='.2f', cmap='Blues').set_title('Confusion Matrix') 
+```
+
+Broadly speaking there are two types of machine learning algorithms,  
+1.Supervised and   
+2.Unsupervised  
+
+**Supervised** machine learning algorithms are the ones where we train the computer by supplying some training data and then by learning from that data it would be able to apply what it has learn't on the new data.  
+
+**Unsupervised** machine learning algorithms doesn't learn anything it just applies the techniques on the data.(eg: Cluster Analysis)  
+
+All the methods used below come under **supervised learning** as we supply a training set for the algorithm to learn.  
+
+**1.Naive Bayes**  
+The multinomial Naive Bayes classifier is suitable for classification with discrete features (e.g., word counts for text classification). The multinomial distribution normally requires integer feature counts. However, in practice, fractional counts such as tf-idf also works.  
+
+**2.XGBOOST**   
+XGBoost is an implementation of gradient boosted decision trees designed for speed and performance.XGBoost stands for eXtreme Gradient Boosting. Gradient boosting is an approach where new models are created that predict the residuals or errors of prior models and then added together to make the final prediction. It is called gradient boosting because it uses a gradient descent algorithm to minimize the loss when adding new models.
+
+To know more about XGBOOST check [this.](https://github.com/dmlc/xgboost)
+
+**3.Support Vector Machine**  
+Support vector machines (SVMs) are a set of supervised learning methods used for classification, regression and outliers detection.
+To know more about SVM check [this.](https://scikit-learn.org/stable/modules/svm.html)
+
+
+**4.Logistic Regression**  
+Logistic regression is a process of modeling the probability of a discrete outcome given an input variable. The most common logistic regression models a binary outcome; something that can take two values such as true/false, yes/no, and so on in our case it is positive/negative. Multinomial logistic regression can model scenarios where there are more than two possible discrete outcomes. Logistic regression is a useful analysis method for classification problems, where you are trying to determine if a new sample fits best into a category.   
+To know more about SVM check [this.](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html)  
+
+**5.Neural Network**  
+Neural networks, also known as artificial neural networks (ANNs) or simulated neural networks (SNNs), are a subset of machine learning and are at the heart of deep learning algorithms. Their name and structure are inspired by the human brain, mimicking the way that biological neurons signal to one another.  
+
+Artificial neural networks (ANNs) are comprised of a node layers, containing an input layer, one or more hidden layers, and an output layer. Each node, or artificial neuron, connects to another and has an associated weight and threshold. If the output of any individual node is above the specified threshold value, that node is activated, sending data to the next layer of the network. Otherwise, no data is passed along to the next layer of the network.  
