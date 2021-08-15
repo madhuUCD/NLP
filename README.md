@@ -43,8 +43,8 @@ Select the required destination folder where you want to install Anaconda
 Installation has started  
 ![Install](https://user-images.githubusercontent.com/88864828/129460685-bd7c2f55-1c12-437c-abb7-4f9fd0c6e54d.JPG)
 
-Anconda is Installed Click on Next  
-![Install5](https://user-images.githubusercontent.com/88864828/129460768-8bb4f4cb-359d-4958-a620-e2938819e338.jpg)
+Anconda is Installed Click on Next
+![Install5](https://user-images.githubusercontent.com/88864828/129460768-8bb4f4cb-359d-4958-a620-e2938819e338.jpg)  
 
 Click on Next
 ![Install6](https://user-images.githubusercontent.com/88864828/129460815-ee3700cd-daf9-4df3-9c58-11aea3e9ed9b.JPG)
