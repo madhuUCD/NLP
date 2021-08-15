@@ -489,20 +489,25 @@ data['Text'] = data['Text'].apply(lemmatize)
 
 ## Feature Engineering and Selection of model  
 Text data requires special preparation before predictive modelling. The text must be parsed to remove words, called tokenization. Then the words need to be encoded as integers or floating point values as input to a machine learning algorithm, called feature extraction (or vectorization).The scikit-learn library offers easy-to-use tools to perform both tokenization and feature extraction of your text data. 
+
+###### TF-IDF
+Using TfidfVectorizer we will tokenize documents, learn the vocabulary and inverse document frequency weightings, and  encode it as a new document. The inverse document frequencies are calculated for each word in the vocabulary, assigning the lowest score of 1.0. The scores are normalized to values between 0 and 1 and the encoded document vectors can then be used directly with most machine learning algorithms.
+
+This is an acronym than stands for “Term Frequency – Inverse Document”
+
+**Term Frequency:** This summarizes how often a given word appears within a document.
+**Inverse Document Frequency:** This downscales words that appear a lot across documents.
 ```
 vectorizer = TfidfVectorizer(max_features=700)
 vectorizer.fit(data['Text'])
 features = vectorizer.transform(data['Text'])
 
 features.toarray()
-```
-Using TfidfVectorizer we will tokenize documents, learn the vocabulary and inverse document frequency weightings, and  encode it as a new document. The inverse document frequencies are calculated for each word in the vocabulary, assigning the lowest score of 1.0. The scores are normalized to values between 0 and 1 and the encoded document vectors can then be used directly with most machine learning algorithms.
-```
 tf_idf = pd.DataFrame(features.toarray(), columns=vectorizer.get_feature_names()).astype(np.float16)
 # tf_idf.drop('50', axis=1, inplace=True)
 tf_idf.head()
-tf_idf.info(memory_usage='deep')
 ```
+We can see that now all the explanatory variables(text) are converted into float which is readable by the computer.  
 
 ## Split the dataset  
 The idea is to train the machine learning model on a specific dataset and test it on unseen data (another dataset). For this purpose we split the given dataset into two sets Training and Testing Sets.  
@@ -512,3 +517,63 @@ We would train all our machine learning models on a training datset and Test in 
 While splitting we need to make sure that there is no overlap of data between the testing and training set because if there is a overlap the given machine learning model would perform well in the testing set but would fail when deployed in production. 
 
 But this can be easily done with the help of `train_test_split` function wherin we use test_size=0.2( means 20% of data will be allocated for testing dataset and remaining 80% for training), random_state=42(This is a random number given to reproduce the result)  
+```
+#Random state is similar to seed it helps to reproduce the split
+X_train, X_test, y_train, y_test = train_test_split(tf_idf, data['sentiment_score'],  )
+```
+Now we check the dimension of our splitted train and test dataset
+
+```
+print (f'Train set shape\t:{X_train.shape}\nTest set shape\t:{X_test.shape}')
+```
+![image](https://user-images.githubusercontent.com/88864828/129462726-b79305b7-a96c-44eb-a31e-413a6ed61d21.png)
+
+We can see that there are 700 features in each dataset but initially we had only 10 features, the increase in feature is contributed by TF-IDF
+
+**Result of Split explained**  
+X_train --> All features are explanatory variables of training dataset  
+X_test  --> All features are explanatory variables of testing dataset  
+y_train --> Has only one response variable of training dataset  
+y_test  --> Has only one response variable of testing dataset  
+
+## Oversampling  
+Imbalanced datasets are those where there is a severe skew in the class distribution.  
+
+This bias in the training dataset can influence many machine learning algorithms, leading some to ignore the minority class entirely. This is a problem as it is typically the minority class on which predictions are most important.  
+
+One approach to addressing the problem of class imbalance is to randomly resample the training dataset. The two main approaches to randomly resampling an imbalanced dataset are to delete examples from the majority class, called undersampling, and to duplicate examples from the minority class, called oversampling.  
+
+Our dataset is skewed.  
+![image](https://user-images.githubusercontent.com/88864828/129462883-ff92e320-648e-47c9-828c-2fd160ae8054.png)
+
+So we perform oversampling.  
+
+```
+target_count = train_data['sentiment_score'].value_counts()
+negative_class = train_data[train_data['sentiment_score'] == 0]
+positive_class = train_data[train_data['sentiment_score'] == 1]
+
+negative_over = negative_class.sample(target_count[1], replace=True)
+
+df_train_over = pd.concat([positive_class, negative_over], axis=0)
+df_train_over = shuffle(df_train_over)
+df_train_over.head()
+```
+
+Now we check the frequency of data in each class.  
+
+![image](https://user-images.githubusercontent.com/88864828/129462898-44588476-60d3-4225-98d9-911395548c26.png)
+
+It can be noted that the minority class is '0' with 100011 observations and the major class is '1' with '354752' observations.  
+
+After Oversampling the the count of minority class equals the majority class.
+
+## Models  
+
+Since our data is ready now it's time to fit different models like 
+
+1.
+2.
+3.
+4.
+5.
