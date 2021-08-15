@@ -564,9 +564,9 @@ Now we check the frequency of data in each class.
 
 ![image](https://user-images.githubusercontent.com/88864828/129462898-44588476-60d3-4225-98d9-911395548c26.png)
 
-It can be noted that the minority class is '0' with 100011 observations and the major class is '1' with '354752' observations.  
+It can be noted that the minority class '0' had 100011 observations and the major class'1' had '354752' observations.  
 
-After Oversampling the the count of minority class equals the majority class.
+But after Oversampling the the count of minority class equals the majority class.
 
 ## Models  
 
