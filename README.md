@@ -624,9 +624,12 @@ All the methods used below come under **supervised learning** as we supply a tra
 
 **1.Naive Bayes**  
 The multinomial Naive Bayes classifier is suitable for classification with discrete features (e.g., word counts for text classification). The multinomial distribution normally requires integer feature counts. However, in practice, fractional counts such as tf-idf also works.  
+![image](https://user-images.githubusercontent.com/88864828/129501652-8892228c-8da3-4e4e-8b25-912107172017.png)
 
 **2.XGBOOST**   
 XGBoost is an implementation of gradient boosted decision trees designed for speed and performance.XGBoost stands for eXtreme Gradient Boosting. Gradient boosting is an approach where new models are created that predict the residuals or errors of prior models and then added together to make the final prediction. It is called gradient boosting because it uses a gradient descent algorithm to minimize the loss when adding new models.
+
+![image](https://user-images.githubusercontent.com/88864828/129501674-63cee04e-f1e5-4e88-b4e7-0cbde3f14d7f.png)
 
 To know more about XGBOOST check [this.](https://github.com/dmlc/xgboost)
 
@@ -634,16 +637,23 @@ To know more about XGBOOST check [this.](https://github.com/dmlc/xgboost)
 Support vector machines (SVMs) are a set of supervised learning methods used for classification, regression and outliers detection.
 To know more about SVM check [this.](https://scikit-learn.org/stable/modules/svm.html)
 
-
 **4.Logistic Regression**  
 Logistic regression is a process of modeling the probability of a discrete outcome given an input variable. The most common logistic regression models a binary outcome; something that can take two values such as true/false, yes/no, and so on in our case it is positive/negative. Multinomial logistic regression can model scenarios where there are more than two possible discrete outcomes. Logistic regression is a useful analysis method for classification problems, where you are trying to determine if a new sample fits best into a category.   
 To know more about SVM check [this.](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html)  
+
+![image](https://user-images.githubusercontent.com/88864828/129501742-6e470705-cc61-40f3-a71f-e6bebef296b1.png)
+  
 
 **5.Neural Network**  
 Neural networks, also known as artificial neural networks (ANNs) or simulated neural networks (SNNs), are a subset of machine learning and are at the heart of deep learning algorithms. Their name and structure are inspired by the human brain, mimicking the way that biological neurons signal to one another.  
 
 Artificial neural networks (ANNs) are comprised of a node layers, containing an input layer, one or more hidden layers, and an output layer. Each node, or artificial neuron, connects to another and has an associated weight and threshold. If the output of any individual node is above the specified threshold value, that node is activated, sending data to the next layer of the network. Otherwise, no data is passed along to the next layer of the network.  
 
-Pycaret  
+**Random Forrest**
+A random forest is a machine learning technique that's used to solve regression and classification problems. It utilizes ensemble learning, which is a technique that combines many classifiers to provide solutions to complex problems. A random forest algorithm consists of many decision trees.  
+To know more about random forrest click [here](https://www.sciencedirect.com/topics/engineering/random-forest)
 
-![image](https://user-images.githubusercontent.com/88864828/129490572-d364463a-b123-461c-9494-db9d25f0a8ac.png)
+![image](https://user-images.githubusercontent.com/88864828/129501883-acf570df-0ac3-47c4-a6b4-b37a70dacaf9.png)
+
+
+Comparing all the models with respect to AUC, Recall and Precesion Random Forest has the highest predictive performance with a classification accuracy of 91%. So to classify the review we will be deploying Random Forest(RF) in the production.
