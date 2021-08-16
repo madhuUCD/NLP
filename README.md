@@ -138,7 +138,7 @@ NLTK      --> NLP techniques
 string    --> String Manipluation  
 re        --> Regular Expression  
 
-
+[Download](https://drive.google.com/file/d/1uovOPQvcUQ9k7_Rk6SCPJVA4wf5ekxud/view?usp=sharing) the dataset.
 Load the Amazon dataset using pandas library.
 
 Since the dataset is in .csv format we use read_csv function of pandas to load the dataset.
@@ -486,6 +486,7 @@ data['Text'] = data['Text'].apply(remove_stopwords)
 # lemmatize
 data['Text'] = data['Text'].apply(lemmatize)
 ```
+[Download](https://drive.google.com/file/d/1k6ZaoRxwuYpqJQH9Kn03hUn-GYmKBP6T/view?usp=sharing) cleaned datset.  
 
 ## Feature Engineering and Selection of model  
 Text data requires special preparation before predictive modelling. The text must be parsed to remove words, called tokenization. Then the words need to be encoded as integers or floating point values as input to a machine learning algorithm, called feature extraction (or vectorization).The scikit-learn library offers easy-to-use tools to perform both tokenization and feature extraction of your text data. 
